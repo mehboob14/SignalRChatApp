@@ -1,19 +1,30 @@
 ﻿@{
-    ViewData["Title"] = "Join Chat Room";
+    ViewData["Title"] = "Chat Room";
 }
 
-<h1>Join Chat Room</h1>
+<h1>Welcome to @ViewBag.RoomName</h1>
 
-<form id="joinForm" method="post" action="/Chat/JoinRoom">
-    <div>
-        <label for="displayName">Display Name:</label>
-        <input type="text" id="displayName" name="displayName" required />
+<h2>Joined Users:</h2>
+<ul id="usersList"></ul>
+
+<div id="chatContainer">
+    <div id="messagesList">
+        <div>
+            user1
+        </div>
     </div>
-    <div>
-        <label for="roomName">Room Name:</label>
-        <input type="text" id="roomName" name="roomName" required />
-    </div>
-    <div>
-        <button type="submit">Join</button>
-    </div>
-</form>
+    <input type="text" id="messageInput" placeholder="Enter message." />
+    <button id="sendMessage" onclick="sendMessage()">Send</button>
+</div>
+
+
+<link href="~/css/chat.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft.signalr/5.0.12/signalr.min.js"></script>
+
+<script>
+    var roomName = '@ViewBag.RoomName';
+    var displayName = '@ViewBag.DisplayName';
+</script>
+
+<script src="~/js/chat.js"></script>
